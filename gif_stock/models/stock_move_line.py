@@ -8,6 +8,7 @@ class StockMoveLine(models.Model):
     gif_real_stock = fields.Float(string='Cantidad Real Entregada',compute="_calcule_salida")
     # gif_real = fields.Char(related='gif_real_stock.gif_real_stock1')
     gif_real_type = fields.Char(string='Picking Name', compute="calcule_valor")
+    gif_real = fields.Float(string='Entregado Real', compute='equalization', readonly=False )
     
 
     def _calcule_salida(self):
@@ -35,9 +36,13 @@ class StockMoveLine(models.Model):
                 record.gif_real_type = ''
 
             print(record.gif_real_type)
-            # picking=self.env['stock.picking'].search([('picking_type_id','=','Órdenes de entrega')])
-            # for pick in picking:
-            #     print(pick.name)
-            
-            # print(record.gif_real_name)
     
+    def equalization(self):
+        for record in self:
+            if record.picking_id.gif_select_all == True:
+                res = record.qty_done 
+            else:
+                res = 0
+            record.gif_real= res
+                
+        

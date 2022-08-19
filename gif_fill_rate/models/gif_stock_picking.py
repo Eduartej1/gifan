@@ -5,7 +5,7 @@ from odoo import api, fields, models
 class StockPicking(models.Model):
     _inherit='stock.picking'
 
-    gif_stock_fill_rate = fields.Boolean(string="Con Fill Rate", related='partner_id.gif_fill_rate', store=True )
+    gif_stock_fill_rate = fields.Boolean(string="Con Fill Rate", related='partner_id.gif_fill_rate', store=True)
 
     gif_stock_kanban_show = fields.Selection(string="Fill Rate", selection=[('1', 'Fill Rate'), ('0', 'None')], compute='get_fill_rate_kanban')
 

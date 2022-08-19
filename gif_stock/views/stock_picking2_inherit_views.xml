@@ -8,6 +8,10 @@
       <xpath expr="//field[@name='origin']" position="before">
         <field name="gif_prueba_boton" readonly='1' invisible='1'/>
       </xpath>
+      
+      <xpath expr="//field[@name='origin']" position="before">
+        <field name="gif_select_all" />
+      </xpath>
     </field>
   </record>
 
@@ -17,7 +21,7 @@
     <field name="model">stock.picking</field>
     <field name="inherit_id" ref="stock.view_picking_form"/>
     <field name="arch" type="xml">
-      <!-- Add your xpath here -->
+
       <xpath expr="//notebook//page[@name='detailed_operations']" position="replace" attrs="{'invisible': [('origin','=', False)]}">
         <page name="detailed_operations" string="a Detalladas" attrs="{'invisible': [('gif_prueba_boton','=', False)]}">
           <field name="move_line_ids_without_package">
@@ -41,7 +45,9 @@
               <field name="product_uom_qty" readonly="1" attrs="{'column_invisible': ['|',('parent.immediate_transfer', '=', True),('parent.picking_type_code','=','incoming')]}" optional="show" />
               <field name="is_locked" invisible="1" />
               <field name="qty_done" attrs="{'readonly': [('state', 'in', ('done', 'cancel')), ('is_locked', '=', True)]}" force_save="1" />
-              <field name="gif_real_stockpicking" attrs="{'readonly': ['|',('gif_real_type', '=', 'internal'),('gif_real_type', '=', 'incoming')]}" />
+              <field name="gif_real"/>
+              <field name="gif_real_stockpicking"  attrs="{'readonly': ['|',('gif_real_type', '=', 'internal'),('gif_real_type', '=', 'incoming')]}" />
+              
               <field name="gif_real_type" />
               <field name="product_uom_id" force_save="1" attrs="{'readonly': [('state', '!=', 'draft'), ('id', '!=', False)]}" groups="uom.group_uom" />
             </tree>

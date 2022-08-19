@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+  <menuitem id="gif_routes_delivery_menuitem" name="AAAAAAAAAAAAA" parent="stock.menu_stock_warehouse_mgmt" action="gif_delivery_routes"/>
+</odoo> 
