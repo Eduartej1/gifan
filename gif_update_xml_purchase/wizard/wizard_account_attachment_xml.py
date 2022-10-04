@@ -64,7 +64,6 @@ class WizardAccountUnattachmentXML(models.TransientModel):
             ids = record.move_id.attachment_ids.ids
             res['domain'] = {'move_attached': [('id', '=', ids)]}
             return res
-
     def unattachment_to_invoice(self):
         print('Desadjuntar')
         for record in self:

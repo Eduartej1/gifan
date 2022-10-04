@@ -22,4 +22,6 @@ class PurchaseOrder(models.Model):
             if unit == 'Unidades':
                 res= record.product_uom_qty * 1
                 record.gif_total_units=res
+            else:
+                pass
                 

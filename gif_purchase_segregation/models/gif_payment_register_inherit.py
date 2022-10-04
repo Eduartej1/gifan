@@ -1,4 +1,4 @@
-from odoo import models,api,fields
+from odoo import models,api,fields,_
 
 
 class AccountPaymentRegisterPS(models.TransientModel):
@@ -26,6 +26,9 @@ class AccountPaymentRegisterPS(models.TransientModel):
             elif invoice_purchase.type_of_sale:
                 record.gif_is_purchase = False
                 record.type_of_purchase = False
+            else:
+                record.gif_is_purchase = ''
+                record.type_of_purchase = ''
 
     def _create_payment_vals_from_wizard(self):
         payment_vals = {

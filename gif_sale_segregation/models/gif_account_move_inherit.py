@@ -19,6 +19,10 @@ class AccountMoveSS(models.Model):
     ('3', 'Descuentos y beneficios')], compute="_type_sale",inverse='_inverse_sale',store=True)
     type_of_sale = fields.Many2one(comodel_name='gif.tipificaciones.ventas', string='Tipo de Venta', store=True)
 
+    
+    
+            
+            
     def _type_sale(self):
         for record in self:
             if record.type_of_sale == 1:
